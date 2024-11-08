@@ -1,4 +1,4 @@
-module aoc-2015-day-1
+module aoc-2015-day-2
 
 go 1.23.3
 
