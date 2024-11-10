@@ -3,32 +3,36 @@ package main
 import "testing"
 import "github.com/stretchr/testify/assert"
 
-func TestDay1Part1(t *testing.T) {
+func TestPart1(t *testing.T) {
 	var input = []struct {
 		input    string
 		expected int
 	}{
-		{"2x3x4", 58},
-		{"1x1x10", 43},
+		{"(())", 0},
+		{"()()", 0},
+		{"(((", 3},
+		{"(()(()(", 3},
+		{"())", -1},
+		{"))(", -1},
+		{")))", -3},
+		{")())())", -3},
 	}
 	for _, test := range input {
-		present := Present{NewDimensions(test.input)}
-		result := present.Wrapping()
+		result := part1(test.input)
 		assert.Equal(t, test.expected, result, "they should be equal")
 	}
 }
 
-func TestDay1Part2(t *testing.T) {
+func TestPart2(t *testing.T) {
 	var input = []struct {
 		input    string
 		expected int
 	}{
-		{"2x3x4", 34},
-		{"1x1x10", 14},
+		{")", 1},
+		{"()())", 5},
 	}
 	for _, test := range input {
-		present := Present{NewDimensions(test.input)}
-		result := present.Ribbon()
+		result := part2(test.input)
 		assert.Equal(t, test.expected, result, "they should be equal")
 	}
 }
