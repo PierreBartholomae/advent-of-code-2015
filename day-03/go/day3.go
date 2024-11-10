@@ -13,10 +13,10 @@ func main() {
 	input := string(bytes)
 
 	resultPart1 := part1(input)
-	println(resultPart1)
+	println("answer part 1:", resultPart1)
 
 	resultPart2 := part2(input)
-	println(resultPart2)
+	println("answer part 2:", resultPart2)
 }
 
 // Position of a house

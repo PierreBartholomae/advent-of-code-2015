@@ -19,7 +19,7 @@ func main() {
 	defer file.Close()
 
 	resultPart1 := part1(file)
-	println(resultPart1)
+	println("answer part 1:", resultPart1)
 
 	file, err = os.Open("input")
 	if err != nil {
@@ -27,7 +27,7 @@ func main() {
 	}
 	defer file.Close()
 	resultPart2 := part2(file)
-	println(resultPart2)
+	println("answer part 2:", resultPart2)
 }
 
 func part1(file io.Reader) int {
