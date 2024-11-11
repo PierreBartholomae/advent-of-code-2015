@@ -1,42 +1,48 @@
 package main
 
 import (
+	"bufio"
+	"io"
 	"os"
 	"strings"
 )
 
 func main() {
-	bytes, err := os.ReadFile("input")
+	file, err := os.Open("input")
 	if err != nil {
 		panic("File at path ./input could not be read.")
 	}
-	input := string(bytes)
+	defer file.Close()
 
-	resultPart1 := part1(input)
+	resultPart1 := part1(file)
 	println("answer part 1:", resultPart1)
 
-	resultPart2 := part2(input)
+	resultPart2 := part2(file)
 	println("answer part 2:", resultPart2)
 }
 
-func part1(input string) int {
-	texts := strings.Split(input, "\n")
+func part1(file io.Reader) int {
 	niceStrings := 0
-	for _, text := range texts {
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		text := scanner.Text()
 		if onlyNicePairs(text) && twiceSameLetter(text) && atLeastThreeVowels(text) {
 			niceStrings += 1
 		}
+
 	}
 	return niceStrings
 }
 
-func part2(input string) int {
-	texts := strings.Split(input, "\n")
+func part2(file io.Reader) int {
 	niceStrings := 0
-	for _, text := range texts {
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		text := scanner.Text()
 		if twiceSameLetterWithoutOverlapping(text) && repeatingLetterWithLetterBetween(text) {
 			niceStrings += 1
 		}
+
 	}
 	return niceStrings
 }
