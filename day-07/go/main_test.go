@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -17,7 +16,7 @@ func TestPart1(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		result := part1(strings.NewReader(tt.input))
+		result := part1(tt.input)
 		assert.Equal(t, tt.expected, result, "they should be equal")
 	}
 }
